@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="647.0" prefWidth="885.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.mkapps.trigvizproject.FXMLController">
+    <children>
+        <Button fx:id="button" layoutX="90.0" layoutY="447.0" onAction="#doQuery" prefHeight="86.0" prefWidth="159.0" text="Click Me!" />
+      <TextField fx:id="inputText" layoutX="27.0" layoutY="211.0" prefHeight="93.0" prefWidth="286.0" />
+      <Label layoutX="131.0" layoutY="168.0" text="Equation Here:" />
+      <Label layoutX="617.0" layoutY="168.0" text="Output Here:" />
+      <Label fx:id="outputText" layoutX="602.0" layoutY="241.0" text="&lt;pending output&gt;" />
+      <Label layoutX="258.0" layoutY="57.0" text="An Amazing Program!">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

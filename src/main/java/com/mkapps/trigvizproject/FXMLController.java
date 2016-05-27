@@ -67,13 +67,14 @@ public class FXMLController implements Initializable {
                 // Got a result.
                 outputText.setText("");
                 for (WAPod pod : queryResult.getPods()) {
-                    if (!pod.isError() && (pod.getTitle().equals("Result") || pod.getTitle().equals("Exact result")) ) {
+                    if (!pod.isError() && (pod.getTitle().equals("Result") || pod.getTitle().equals("Exact result")|| pod.getTitle().equals("Input")|| pod.getTitle().equals("Alternate forms")) ) {
                         outputText.setText(outputText.getText()+"\n"+pod.getTitle()+"\n------");
                         for (WASubpod subpod : pod.getSubpods()) {
                             for (Object element : subpod.getContents()) {
                                 if (element instanceof WAPlainText) {
-                                    outputText.setText(outputText.getText()+"\n"+((WAPlainText) element).getText()+"\n---");
-                                    System.out.println(((WAPlainText) element).getText());
+                                    outputText.setText(outputText.getText()+"\n"+((WAPlainText) element).getText().replace("\uF7D9", "=")+"\n---");
+                                    System.out.println(((WAPlainText) element).getText().replace("\uF7D9", "="));
+                                    //System.out.println(((WAPlainText) element).getText());
                                     //System.out.println("");
                                 }
                             }

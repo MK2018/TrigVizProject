@@ -56,7 +56,7 @@ public class FXMLController implements Initializable {
             // This sends the URL to the Wolfram|Alpha server, gets the XML result
             // and parses it into an object hierarchy held by the WAQueryResult object.
             WAQueryResult queryResult = engine.performQuery(query);
-            
+
             if (queryResult.isError()) {
                 System.out.println("Query error");
                 System.out.println("  error code: " + queryResult.getErrorCode());
@@ -66,12 +66,9 @@ public class FXMLController implements Initializable {
             } else {
                 // Got a result.
                 outputText.setText("");
-                //System.out.println("Successful query. Pods follow:\n");
                 for (WAPod pod : queryResult.getPods()) {
-                    if (!pod.isError() && pod.getTitle().equals("Result")) {
+                    if (!pod.isError() && (pod.getTitle().equals("Result") || pod.getTitle().equals("Exact result")) ) {
                         outputText.setText(outputText.getText()+"\n"+pod.getTitle()+"\n------");
-                        //System.out.println(pod.getTitle());
-                        //System.out.println("------------");
                         for (WASubpod subpod : pod.getSubpods()) {
                             for (Object element : subpod.getContents()) {
                                 if (element instanceof WAPlainText) {
@@ -81,7 +78,6 @@ public class FXMLController implements Initializable {
                                 }
                             }
                         }
-                        //System.out.println("");
                     }
                 }
                 // We ignored many other types of Wolfram|Alpha output, such as warnings, assumptions, etc.
